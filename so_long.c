@@ -59,63 +59,43 @@ static void	*ft_memset(void *b, int c, size_t length)
 }
 
 
-
-void set_textures(game_cars *game)
+void set_textures1(game_cars *game)
 {
     game->wall= mlx_load_png("./temp/wall.png");
     if(!game->wall)
-    {
             ft_close(game);
-    }
-   game->wl = mlx_texture_to_image(game->mlx, game->wall);
+    game->wl = mlx_texture_to_image(game->mlx, game->wall);
     if(!game->wl)
-        {
             ft_close(game);
-    }
-
-     game->vid= mlx_load_png("./temp/walking_path.png");
+    game->vid= mlx_load_png("./temp/walking_path.png");
     if(!game->wall)
-       {
             ft_close(game);
-    }
-   game->vd = mlx_texture_to_image(game->mlx, game->vid);
+    game->vd = mlx_texture_to_image(game->mlx, game->vid);
     if(!game->wl)
-       {
             ft_close(game);
-    }
-
-      game->pl_up= mlx_load_png("./temp/player_d.png");
+    game->pl_up= mlx_load_png("./temp/player_d.png");
     if(!game->wall)
-       {
             ft_close(game);
-    }
-   game->player_up = mlx_texture_to_image(game->mlx, game->pl_up);
+}
+
+void set_textures(game_cars *game)
+{
+   set_textures1(game);
+    game->player_up = mlx_texture_to_image(game->mlx, game->pl_up);
     if(!game->wl)
-       {
             ft_close(game);
-    }
-
-      game->fd= mlx_load_png("./temp/coffee.png");
+    game->fd= mlx_load_png("./temp/coffee.png");
     if(!game->wall)
-        {
             ft_close(game);
-    }
    game->food = mlx_texture_to_image(game->mlx, game->fd);
     if(!game->wl)
-        {
             ft_close(game);
-    }
-
     game->et= mlx_load_png("./temp/exit.png");
     if(!game->et)
-        {
             ft_close(game);
-    }
-   game->exit = mlx_texture_to_image(game->mlx, game->et);
+    game->exit = mlx_texture_to_image(game->mlx, game->et);
     if(!game->exit)
-       {
             ft_close(game);
-    }
 }
 void print_map(game_cars *game)
 {
@@ -212,39 +192,6 @@ int controls_car(struct mlx_key_data key_data, void *param)
    return (1);
 }
 
-int	is_move_valid(game_cars *game, int y, int x,
-		int **has_visited)
-{
-   
-	if (game->gamemap[y][x] == '1' || has_visited[y][x])
-		return (0);
- 
-	return (1);
-}
-
-void	flood_fill(game_cars *game, int y, int x,int **has_visited)
-{
-	int					i;
-	static int			direction_x[] = {-1, 0, 0, 1};
-	static int			direction_y[] = {0, -1, 1, 0};
-	int					new_x;
-	int					new_y;
-
-	i = 0;
-	has_visited[y][x] = 1; // Mark current tile as visited;
-	// Check all four directions (top, left, right, bottom)
-	while (i < 4)
-	{
-        
-		new_x = x + direction_x[i];
-		new_y = y + direction_y[i];
-		if (is_move_valid(game, new_y, new_x, has_visited) == 1)
-			flood_fill(game, new_y, new_x, has_visited);
-		i++;
-        
-	}
-}
-
 void get_pos_player(game_cars *game)
 {
      int i = 0;
@@ -264,71 +211,6 @@ void get_pos_player(game_cars *game)
         i++;
     }
 }
-int allocate(game_cars *game,int **has_visited)
-{
-    
-    int a=0;
-    int b = 0;
-    while(a < game->map_height)
-    {
-        has_visited[a] =(int *) malloc(game->map_width * sizeof(int));
-        if(!has_visited[a])
-            return 0;
-        b = 0;
-        while(b < game->map_width)
-        {
-            has_visited[a][b] = 0;
-            b++;
-        }
-        a++;
-    }
-    return 1;
-}
-void free_int_tab(game_cars *game,int **has_visited)
-{
-       int a=0;
-     while(a < game->map_height)
-    {
-           free(has_visited[a]);
-        a++;
-    }
-     free(has_visited);
-}
-int	check_map_solvable(game_cars *game)
-{
-	
-	static int		**has_visited;
-	int				x;
-	int				y;
-
-       has_visited = (int **)malloc(game->map_height * sizeof(int *));
-    if(!has_visited)
-        return 0;
-    if(allocate(game,has_visited)== 0)
-            return 0;
-    y = 0;
-	flood_fill(game, game->y_player, game->x_player, has_visited);
-	while (game->gamemap[y]!=NULL)
-	{
-		x = 0;
-		while (x < game->map_width)
-		{
-			if ((game->gamemap[y][x] == 'E' || game->gamemap[y][x] == 'C')
-				&& !has_visited[y][x])
-				return 0;
-			x++;
-		}
-		y++;
-	}
-  free_int_tab(game,has_visited);
-    return 1;
-}
-
-
-
-
-
-
 
  void fc(void){
     system("leaks a.out");
