@@ -32,7 +32,7 @@ int	right_move(game_cars *game, int i, int j)
 	}
 	return (1);
 }
-
+//jjjj;
 int	move_u_d(struct mlx_key_data key_data, game_cars *game)
 {
 	int	i;
