@@ -6,7 +6,7 @@
 /*   By: sel-moud <sel-moud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 01:12:45 by sel-moud          #+#    #+#             */
-/*   Updated: 2024/04/08 01:39:08 by sel-moud         ###   ########.fr       */
+/*   Updated: 2024/04/08 02:52:25 by sel-moud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 // 	puts(mlx_strerror(mlx_errno));
 // 	exit(EXIT_FAILURE);
 // }
-
-
 
 void	set_textures1(game_cars *game)
 {
@@ -58,7 +56,6 @@ void	set_textures(game_cars *game)
 	if (!game->exit)
 		ft_close(game);
 }
-
 
 int	controls_car(struct mlx_key_data key_data, void *param)
 {
@@ -126,18 +123,23 @@ int	main(int ac, char **av)
 	get_with(&game);
 	get_pos_player(&game);
 	if (check_map(&game) == 0)
-		exit(0);
+	{
+		game.err = 1;
+		ft_close(&game);
+	}
 	check_items(&game);
 	if (check_map_solvable(&game) == 0)
 	{
-		printf("bba\n");
-		exit(0);
-		// ft_close(&game);
+		game.err = 1;
+		ft_close(&game);
 	}
 	game.mlx = mlx_init((game.map_width * 32), game.map_height * 32, "so_long",
 			true);
 	if (!game.mlx)
+	{
+		game.err = 1;
 		ft_close(&game);
+	}
 	set_textures(&game);
 	print_map(&game);
 	mlx_key_hook(game.mlx, (mlx_keyfunc)controls_car, &game);

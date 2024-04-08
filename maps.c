@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maps.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-moud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sel-moud <sel-moud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 02:21:05 by sel-moud          #+#    #+#             */
-/*   Updated: 2024/04/07 02:36:52 by sel-moud         ###   ########.fr       */
+/*   Updated: 2024/04/08 01:57:58 by sel-moud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	get_map(game_cars *game, char **av)
 
 	fd = open(av[1], O_RDONLY);
 	mp_height = get_height_map(fd);
-	printf("%d\n", mp_height);
 	close(fd);
 	game->gamemap = (char **)malloc((mp_height + 1) * sizeof(char *));
 	i = 0;

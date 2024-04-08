@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sel-moud <sel-moud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/08 02:53:22 by sel-moud          #+#    #+#             */
+/*   Updated: 2024/04/08 02:54:18 by sel-moud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "MLX42/include/MLX42/MLX42.h"
 #include "get_next_line/get_next_line.h"
 #include <fcntl.h>
@@ -32,9 +44,9 @@ typedef struct game_c
 	int				p_count;
 	int				e_count;
 	int				c_count;
+	int				err;
 
 	mlx_t			*mlx;
-
 }					game_cars;
 
 int					get_height_map(int fd);
@@ -53,4 +65,4 @@ void				print_map(game_cars *game);
 int					controls_car(struct mlx_key_data key_data, void *param);
 int					check_map_solvable(game_cars *game);
 void				check_items(game_cars *game);
-void	*ft_memset(void *b, int c, size_t length);
+void				*ft_memset(void *b, int c, size_t length);

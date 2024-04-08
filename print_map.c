@@ -6,7 +6,7 @@
 /*   By: sel-moud <sel-moud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 01:36:00 by sel-moud          #+#    #+#             */
-/*   Updated: 2024/04/08 01:36:50 by sel-moud         ###   ########.fr       */
+/*   Updated: 2024/04/08 02:52:12 by sel-moud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	print_borders(game_cars *game, int i, int j)
 			ft_close(game);
 	}
 }
+
 void	print_map(game_cars *game)
 {
 	int	i;

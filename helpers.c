@@ -6,7 +6,7 @@
 /*   By: sel-moud <sel-moud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 01:39:13 by sel-moud          #+#    #+#             */
-/*   Updated: 2024/04/08 01:41:19 by sel-moud         ###   ########.fr       */
+/*   Updated: 2024/04/08 02:48:37 by sel-moud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	ft_close(game_cars *game)
 	if (game->exit)
 		mlx_delete_image(game->mlx, game->exit);
 	freeing(game);
-	exit(0);
+	if (game->err == 1)
+		exit(1);
+	else
+		exit(0);
 }
 
 void	*ft_memset(void *b, int c, size_t length)
