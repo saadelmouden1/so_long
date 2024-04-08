@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sel-moud <sel-moud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/08 01:02:29 by sel-moud          #+#    #+#             */
+/*   Updated: 2024/04/08 01:08:32 by sel-moud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	found_newline(char *holder)
@@ -16,7 +28,7 @@ int	found_newline(char *holder)
 	return (1);
 }
 
-int	ft_strlen(char	*str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -28,7 +40,7 @@ int	ft_strlen(char	*str)
 	return (i);
 }
 
-char	*ft_strjoin(char	*s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ret;
 	int		i;

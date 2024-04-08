@@ -42,7 +42,7 @@ void	get_map(game_cars *game, char **av)
 	game->gamemap = (char **)malloc((mp_height + 1) * sizeof(char *));
 	i = 0;
 	fd1 = open(av[1], O_RDONLY);
-	while ((game->gamemap[i] = get_next_line(fd1))!=NULL)
+	while ((game->gamemap[i] = get_next_line(fd1)) != NULL)
 		i++;
 	close(fd1);
 	game->gamemap[i] = NULL;
@@ -53,8 +53,8 @@ void	get_with(game_cars *game)
 {
 	int	i;
 
-    i = 0;
-	while (game->gamemap[0][i]!='\0')
+	i = 0;
+	while (game->gamemap[0][i] != '\0')
 	{
 		i++;
 	}
